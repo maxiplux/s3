@@ -9,8 +9,12 @@ import app.quantun.s3.services.FolderService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 
@@ -18,12 +22,12 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 class FolderController extends CommonFolderController {
 
-    private final FolderService folderService;
+    private final @NotNull FolderService folderService;
 
 
     @PostMapping("/")
 
-    public ResponseEntity<?> createFolder(@Valid @RequestBody FolderDto folderDto) {
+    public @NotNull ResponseEntity<?> createFolder(@Valid @RequestBody FolderDto folderDto) {
         log.info("Request to create folder: {}", folderDto);
         AsyncApiResponse asyncApiResponse = folderService.createFolder(folderDto);
         log.info("Folder created successfully: {}", asyncApiResponse);
@@ -31,7 +35,7 @@ class FolderController extends CommonFolderController {
     }
 
     @PostMapping("/{folderId}")
-    public ResponseEntity<?> uploadPackage(@PathVariable String folderId, @Valid @RequestBody PackageDto packageDTO) {
+    public @NotNull ResponseEntity<?> uploadPackage(@PathVariable String folderId, @Valid @RequestBody PackageDto packageDTO) {
         log.info("Request to upload package to folderId {}: {}", folderId, packageDTO);
         AsyncApiResponse asyncApiResponse = folderService.uploadPackage(folderId, packageDTO);
         log.info("Package uploaded successfully to folderId {}: {}", folderId, asyncApiResponse);

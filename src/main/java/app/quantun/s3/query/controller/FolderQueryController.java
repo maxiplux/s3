@@ -5,7 +5,11 @@ import app.quantun.s3.common.controller.CommonFolderController;
 import app.quantun.s3.services.FolderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
 import java.util.Arrays;
@@ -18,13 +22,13 @@ import java.util.stream.Collectors;
 @Slf4j
 class FolderQueryController extends CommonFolderController {
 
-    private final FolderService folderService;
+    private final @NotNull FolderService folderService;
 
 
     @GetMapping("/")
-    public List<String> getFolders(
-            @RequestParam(value = "path", defaultValue = "/") String path,
-            @RequestParam(value = "filter", required = false) String filter) {
+    public @NotNull List<String> getFolders(
+            @RequestParam(value = "path", defaultValue = "/") @NotNull String path,
+            @RequestParam(value = "filter", required = false) @Nullable String filter) {
 
         File directory = new File(path);
 
