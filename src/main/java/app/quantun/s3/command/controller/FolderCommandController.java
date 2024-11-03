@@ -17,16 +17,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-
 @RequiredArgsConstructor
 @Slf4j
-class FolderController extends CommonFolderController {
+class FolderController implements CommonFolderController {
 
-    private final @NotNull FolderService folderService;
+    private final   FolderService folderService;
 
 
     @PostMapping("/")
-
     public @NotNull ResponseEntity<?> createFolder(@Valid @RequestBody FolderDto folderDto) {
         log.info("Request to create folder: {}", folderDto);
         AsyncApiResponse asyncApiResponse = folderService.createFolder(folderDto);

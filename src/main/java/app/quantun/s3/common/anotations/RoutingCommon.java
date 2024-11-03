@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @RequestMapping
-public @interface ApiCommon {
+public @interface RoutingCommon {
 
     @AliasFor(annotation = RequestMapping.class)
     String value() default "";

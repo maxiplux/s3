@@ -1,6 +1,7 @@
 package app.quantun.s3.query.controller;
 
 
+import app.quantun.s3.common.anotations.Api;
 import app.quantun.s3.common.controller.CommonFolderController;
 import app.quantun.s3.services.FolderService;
 import lombok.RequiredArgsConstructor;
@@ -16,13 +17,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RestController
-
+@Api
 @RequiredArgsConstructor
 @Slf4j
-class FolderQueryController extends CommonFolderController {
+class FolderQueryController implements CommonFolderController {
 
-    private final @NotNull FolderService folderService;
+    private final  FolderService folderService;
 
 
     @GetMapping("/")

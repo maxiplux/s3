@@ -2,6 +2,16 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.3.5'
     id 'io.spring.dependency-management' version '1.1.6'
+
+    id "org.sonarqube" version "5.1.0.4882"
+}
+
+sonar {
+    properties {
+        property "sonar.projectKey", "maxiplux_s3"
+        property "sonar.organization", "maxiplux-github"
+        property "sonar.host.url", "https://sonarcloud.io"
+    }
 }
 
 group = 'app.quantun'
@@ -53,6 +63,9 @@ dependencies {
 
     // https://mvnrepository.com/artifact/software.amazon.awssdk/s3
     testImplementation group: 'software.amazon.awssdk', name: 's3', version: '2.29.3'
+
+    implementation 'org.jetbrains:annotations:24.0.0'
+
 
 
 

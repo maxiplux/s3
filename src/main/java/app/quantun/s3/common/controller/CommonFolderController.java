@@ -1,8 +1,8 @@
 package app.quantun.s3.common.controller;
 
 
-import app.quantun.s3.common.anotations.ApiCommon;
+import app.quantun.s3.common.anotations.RoutingCommon;
 
-@ApiCommon("/api/v1/folders")
-public abstract class CommonFolderController {
+@RoutingCommon("/api/v1/folders")
+public interface  CommonFolderController {
 }

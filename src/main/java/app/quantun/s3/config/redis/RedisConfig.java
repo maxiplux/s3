@@ -1,6 +1,7 @@
 package app.quantun.s3.config.redis;
 
 import app.quantun.s3.query.subscriber.RedisSubscriber;
+
 import org.jetbrains.annotations.NotNull;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,8 +15,8 @@ import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 public class RedisConfig {
 
     @Bean
-    public @NotNull RedisMessageListenerContainer redisContainer(@NotNull RedisConnectionFactory connectionFactory,
-                                                                 @NotNull MessageListenerAdapter listenerAdapter) {
+    public @NotNull RedisMessageListenerContainer redisContainer(RedisConnectionFactory connectionFactory,
+                                                                 MessageListenerAdapter listenerAdapter) {
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
         container.addMessageListener(listenerAdapter, topic());
