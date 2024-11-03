@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Service
-public @interface Publisher {
+public @interface Subcriber {
 
     @AliasFor(annotation = Service.class)
     String value() default "";
