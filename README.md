@@ -19,7 +19,7 @@ This project is a Spring Boot application that integrates with Amazon S3 for fil
 ## Configuration
 
 The application properties are defined in `resources/application.properties`:
-
+Sorry guys, those keys are not real AWS KEYS. They are minions. 
 ```ini
 spring.application.name=s3
 spring.data.redis.host=localhost
